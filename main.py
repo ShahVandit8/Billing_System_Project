@@ -4,50 +4,37 @@ from PIL import ImageTk, Image
 from tkinter import ttk
 from tkinter import messagebox
 import random
-import os, sys
+import os
+import sys
 
-# ========================== Window Design Start Here ========================== #
+# ========================== Window Format Start Here ========================== #
 
 root = Tk()
 root.title("HK Billing Software")                   # This is the title
 root.geometry("1920x1080")                          # This is the measurement of window
 root.resizable(0, 0)                                # To prevent resizing of window
 root.state("zoomed")                                # This is for Full Screen
-bg_color = '#3c3f41'
+bg_color = '#3c3f41'                                # This is variable storing hex color code
 root.configure(bg=bg_color)                         # This is color of background Screen
 photo = PhotoImage(file="icon.png")                 # Icon of the main window
 root.iconphoto(False, photo)
-bg_color1 = '#1B2631'
-bg_color2 = '#626567'
-bg_color3 = '#2b2b2b'
-title_color = '#D0D3D4'
+bg_color1 = '#1B2631'                               # This is variable storing hex color code
+bg_color2 = '#626567'                               # This is variable storing hex color code
+bg_color3 = '#2b2b2b'                               # This is variable storing hex color code
+title_color = '#D0D3D4'                             # This is variable storing hex color code
 
-# ========================== Window Design End Here ========================== #
+# ========================== Window Format End Here ========================== #
 
-# ========================== Functions Starts Here ========================== #
 
 # ========== Variables ========== #
+
 clicked = StringVar()       # select category dropdown list variable
 clicked1 = StringVar()      # select product dropdown list variable
 qty = IntVar()              # Quantity variable
-a = int(qty.get())
+a = int(qty.get())          # Conversion of IntStr() into int()
 expression = ""             # Calculator starting variable
 input_text = StringVar()    # It is used to get the instance of input field
-# Groceries Variables
-rice = 50
-wheat = IntVar()
-sugar = IntVar()
-oil = IntVar()
-# Cosmetic Variables
-soap = IntVar()
-cream = IntVar()
-face_wash = IntVar()
-body_wash = IntVar()
-# Other Variables
-waffer = IntVar()
-biscuit = IntVar()
-colddrink = IntVar()
-namkeen = IntVar()
+
 # Total and Tax variables
 grocery_price = StringVar()
 cosmetic_price = StringVar()
@@ -55,6 +42,7 @@ other_price = StringVar()
 tax_grocery = StringVar()
 tax_cosmetic = StringVar()
 tax_other = StringVar()
+
 # Customer Details Variable
 cname = StringVar()
 cmobile = StringVar()
@@ -63,25 +51,23 @@ randbillno = random.randint(1000, 9000)
 billno.set(str(randbillno))
 search_bill = StringVar()
 
+# Other Required Variables
 items = []
 quantity = []
 final_price_grocery = []
 final_price_cosmetic = []
 final_price_other = []
 final_price = []
-
 net_amt_var = StringVar()
 all_tax = StringVar()
 all_total = StringVar()
 
-
-
+# ========================== Functions Starts Here ========================== #
 # Function = clock() : This will show current time
 def clock():
     hour = time.strftime("%H")
     minute = time.strftime("%M")
     second = time.strftime("%S")
-
     show_time.config(text=hour + ':' + minute + ':' + second)
     show_time.after(1000, clock)
 
@@ -90,11 +76,10 @@ def display_date():
     date = time.strftime("%d")
     month = time.strftime("%m")
     year = time.strftime("%y")
-
     show_date.config(text=date + '-' + month + '-' + year)
     show_date.after(1000, clock)
 
-# Function = select_categories : this will update the product list
+# Function = select_categories : This will update the product list
 def select_categories(e):
     if clicked.get() == 'Groceries':
         product_drop.config(value=grocery_product)
@@ -281,7 +266,7 @@ def bill_txt():
     txtarea.insert(END, "\n    Products             Quantity             Price")
     txtarea.insert(END, "\n##########################################################")
 
-# Function
+# Function bill_area : This will generate the bill
 def bill_area():
     if cname.get() == '':
         messagebox.showinfo("warning", "Please enter Customer Details")
@@ -340,10 +325,9 @@ def exit_window():
     else:
         return
 
-
+# ========================== Functions End Here ========================== #
 
 # ========================== Software Design Starts Here ========================== #
-
 # =============== Title Frame =============== #
 # Top Frame 1
 frame1 = Frame(root, bg=bg_color, height=50, relief=RIDGE)
@@ -471,23 +455,19 @@ frame4 = LabelFrame(root, text='Calculator', font='Helvetica 13 bold', fg=title_
 frame4.place(x=540, y=160)
 
 # Let us creating a frame for the input field
-
 input_frame = Frame(frame4, width=100, height=100, bd=0, highlightbackground="black", highlightcolor="black", highlightthickness=2)
 input_frame.pack(side=TOP)
 
 # Let us create a input field inside the 'Frame'
-
 input_field = Entry(input_frame, font=('arial', 24, 'bold'), textvariable=input_text, width=27, bg="#eee", bd=0, justify=RIGHT)
 input_field.grid(row=0, column=0)
 input_field.pack(ipady=37)
 
 # Let us creating another 'Frame' for the button below the 'input_frame'
-
 button_frame = Frame(frame4, width=312, height=272.5, bg="grey")
 button_frame.pack()
 
 # first row
-
 seven = Button(button_frame, text="7", fg="black", width=16, height=5, bd=0, bg="#fff", command=lambda: extra(7))
 seven.grid(row=1, column=0, padx=1, pady=1)
 
@@ -501,7 +481,6 @@ multiply = Button(button_frame, text="*", fg="black", width=17, height=5, bd=0, 
 multiply.grid(row=1, column=3, padx=1, pady=1)
 
 # second row
-
 four = Button(button_frame, text="4", fg="black", width=16, height=5, bd=0, bg="#fff", command=lambda: extra(4))
 four.grid(row=2, column=0, padx=1, pady=1)
 
@@ -515,7 +494,6 @@ minus = Button(button_frame, text="-", fg="black", width=17, height=5, bd=0, bg=
 minus.grid(row=2, column=3, padx=1, pady=1)
 
 # third row
-
 one = Button(button_frame, text="1", fg="black", width=16, height=5, bd=0, bg="#fff", command=lambda: extra(1))
 one.grid(row=3, column=0, padx=1, pady=1)
 
@@ -529,7 +507,6 @@ plus = Button(button_frame, text="+", fg="black", width=17, height=5, bd=0, bg="
 plus.grid(row=3, column=3, padx=1, pady=1)
 
 # fourth row
-
 Bclear = Button(button_frame, text="C", fg="black", width=16, height=5, bd=0, bg="#eee", command=lambda: clear())
 Bclear.grid(row=4, column=0, padx=1, pady=1)
 
@@ -543,7 +520,6 @@ divide.grid(row=4, column=2, padx=1, pady=1)
 equals = Button(button_frame, text="=", fg="black", width=17, height=5, bd=0, bg="#eee", cursor="hand2",
                 command=lambda: evaluation())
 equals.grid(row=4, column=3, padx=1, pady=1)
-
 
 # =============== Bill Frame =============== #
 # frame 5
@@ -560,7 +536,6 @@ txtarea = Text(frame5, yscrollcommand=scroll_y.set)
 scroll_y.pack(side=RIGHT, fill='y')
 scroll_y.config(command=txtarea.yview)
 txtarea.pack(fill=BOTH, expand=1)
-
 
 # =============== Total and Tax Frame =============== #
 # Frame 6
@@ -615,7 +590,6 @@ other_tax.grid(row=2, column=2, padx=60, pady=10, sticky='w')
 other_tax_txt = Entry(frame6, width=15, font="Fira_Mono 16 bold", textvariable=tax_other)
 other_tax_txt.grid(row=2, column=3, padx=5, pady=10)
 
-
 # =============== Net Payable Frame =============== #
 # Frame 7
 frame8 = Frame(frame6, relief=GROOVE, bg=bg_color)
@@ -653,8 +627,8 @@ exit_button.grid(row=1, column=1, padx=5)
 
 
 # Calling Funtions Starts Here #
-bill_txt()
-display_date()
-clock()
+bill_txt()              # Calling bill_txt to print default Bill Data
+display_date()          # Calling display_date to show date at top right
+clock()                 # Calling clock to show current time at top left
 
 root.mainloop()
