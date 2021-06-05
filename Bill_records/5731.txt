@@ -1,16 +1,18 @@
 ################## Welcome to HK Retails #################
          Phone No: 9825323396 , Vadodara GJ-390018
 
- Bill No: 6361				          Date : 04-06-21
- Customer Name: Vandit Shah				          Time : 23:00
+ Bill No: 5731				          Date : 05-06-21
+ Customer Name: Vandit Shah				          Time : 12:20
  Customer Phone: 9773104623
 ##########################################################
     Products             Quantity             Price
 ##########################################################
-    Rice			    1			50
-    Sugar			    2			300
+    Rice			    2			100
+    Sugar			    1			150
+    Face Wash			    1			300
+    Biscuits			    2			100
 **********************************************************
-    Total Price  :                              350
-    Total Tax :                                 63.0
+    Total Price  :                              650
+    Total Tax :                                 129.0
 **********************************************************
-    Net Price  :                            Rs. 413.0
+    Net Price  :                            Rs. 779.0

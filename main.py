@@ -213,6 +213,9 @@ def clear_all():
     cname.set("")
     cmobile.set("")
     search_bill.set("")
+    billno.set("")
+    randbillno = random.randint(1000, 9000)
+    billno.set(str(randbillno))
     bill_txt()
 
 # Display the Total category wise price and Tax
