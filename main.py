@@ -11,7 +11,11 @@ import sys
 
 root = Tk()
 root.title("HK Billing Software")                   # This is the title
-root.geometry("1920x1080")                          # This is the measurement of window
+width = root.winfo_screenwidth()
+height = root.winfo_screenheight()
+root.geometry("%dx%d" % (width, height))
+root.title("Geeeks For Geeks")
+# This is the measurement of window
 root.resizable(0, 0)                                # To prevent resizing of window
 root.state("zoomed")                                # This is for Full Screen
 bg_color = '#3c3f41'                                # This is variable storing hex color code
