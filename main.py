@@ -14,7 +14,7 @@ root.title("HK Billing Software")                   # This is the title
 width = root.winfo_screenwidth()
 height = root.winfo_screenheight()
 root.geometry("%dx%d" % (width, height))
-root.title("Geeeks For Geeks")
+root.title("Billing Software")
 # This is the measurement of window
 root.resizable(0, 0)                                # To prevent resizing of window
 root.state("zoomed")                                # This is for Full Screen
@@ -264,14 +264,14 @@ def bill_txt():
     da = time.strftime("%d-%m-%y")
     ti = time.strftime("%H:%M")
     txtarea.delete(1.0, END)
-    txtarea.insert(END, "################## Welcome to HK Retails #################\n")
+    txtarea.insert(END, "################ Welcome to HK Retails ###############\n")
     txtarea.insert(END, "         Phone No: 9825323396 , Vadodara GJ-390018")
-    txtarea.insert(END, f"\n\n Bill No: {billno.get()}\t\t\t\t          Date : {da}")
-    txtarea.insert(END, f"\n Customer Name: {cname.get()}\t\t\t\t          Time : {ti}")
+    txtarea.insert(END, f"\n\n Bill No: {billno.get()}\t\t\t\tDate : {da}")
+    txtarea.insert(END, f"\n Customer Name: {cname.get()}\t\t\t\tTime : {ti}")
     txtarea.insert(END, f"\n Customer Phone: {cmobile.get()}")
-    txtarea.insert(END, "\n##########################################################")
+    txtarea.insert(END, "\n######################################################")
     txtarea.insert(END, "\n    Products             Quantity             Price")
-    txtarea.insert(END, "\n##########################################################")
+    txtarea.insert(END, "\n######################################################")
 
 # Function bill_area : This will generate the bill
 def bill_area():
@@ -291,10 +291,10 @@ def bill_area():
         while v < x:
             txtarea.insert(END, f"\n    {items[v]}\t\t\t    {quantity[v]}\t\t\t{final_price[v]}")
             v = v + 1
-        txtarea.insert(END, "\n**********************************************************")
+        txtarea.insert(END, "\n******************************************************")
         txtarea.insert(END, f"\n    Total Price  :                              {all_total.get()}")
         txtarea.insert(END, f"\n    Total Tax :                                 {all_tax.get()}")
-        txtarea.insert(END, "\n**********************************************************")
+        txtarea.insert(END, "\n******************************************************")
         txtarea.insert(END, f"\n    Net Price  :                            {net_amt_var.get()}")
         save_bill()
 
@@ -346,12 +346,14 @@ clock_img = clock_img.resize((30, 30))
 my_clock = ImageTk.PhotoImage(clock_img)
 
 # Clock Image Label
-clockLabel = Label(frame1, image=my_clock, bg=bg_color, fg='white')
-clockLabel.place(x=5, y=13)
+clock_frame = Frame(frame1, bg=bg_color)
+clock_frame.pack(side=LEFT)
+clockLabel = Label(clock_frame, image=my_clock, bg=bg_color, fg='white')
+clockLabel.pack(side=LEFT, padx=20)
 
 # Time display
-show_time = Label(frame1, text='', bg=bg_color, fg='white', font='Helvetica 15 bold')
-show_time.pack(side=LEFT, padx=45)
+show_time = Label(clock_frame, text='', bg=bg_color, fg='white', font='Helvetica 15 bold')
+show_time.pack(side=LEFT)
 
 # Image of Calander
 calander_img = Image.open("calander.png")
@@ -359,12 +361,14 @@ calander_img = calander_img.resize((23, 23))
 my_calander = ImageTk.PhotoImage(calander_img)
 
 # Calander Image Label
-calanderLabel = Label(frame1, image=my_calander, bg=bg_color, fg='white')
-calanderLabel.place(x=1400, y=16)
+date_frame = Frame(frame1, bg=bg_color)
+date_frame.pack(side=RIGHT)
+calanderLabel = Label(date_frame, image=my_calander, bg=bg_color, fg='white')
+calanderLabel.pack(side=LEFT)
 
 # Date Display
-show_date = Label(frame1, text='', bg=bg_color, fg='white', font='Helvetica 15 bold')
-show_date.pack(side=RIGHT, padx=10,)
+show_date = Label(date_frame, text='', bg=bg_color, fg='white', font='Helvetica 15 bold')
+show_date.pack(side=RIGHT, padx=25)
 
 # Image of LOGO
 logo = Image.open("icon.png")
@@ -372,17 +376,19 @@ logo = logo.resize((48, 48))
 my_logo = ImageTk.PhotoImage(logo)
 
 # Logo Image Label
-logoLabel = Label(frame1, image=my_logo, bg=bg_color, fg='white')
-logoLabel.place(x=545, y=5)
+title_frame = Frame(frame1, bg=bg_color)
+title_frame.pack(side=TOP)
+logoLabel = Label(title_frame, image=my_logo, bg=bg_color, fg='white')
+logoLabel.pack(side=LEFT)
 
 # Title in Frame 1
-title = Label(frame1, text="HK Billing Software", font="Fira_Mono 30 bold", bg=bg_color, fg='white')
-title.pack(padx=10, pady=5)
+title = Label(title_frame, text="HK Billing Software", font="Fira_Mono 30 bold", bg=bg_color, fg='white')
+title.pack(side=RIGHT)
 
 # =============== Customer Details Frame =============== #
 # Frame 2 :
 frame2 = LabelFrame(root, text="Customer Details", font='Helvetica 13 bold', fg=title_color, bg=bg_color)
-frame2.place(x=0, y=60, relwidth=1)
+frame2.pack(side=TOP)
 
 # Customer Name Label
 cname_label = Label(frame2, text="Customer Name: ", font="Fira_Mono 16 bold", bg=bg_color, fg='white')
@@ -414,9 +420,13 @@ bill_button.grid(row=0, column=6, pady=7, padx=73)
 
 
 # =============== Item Details Frame =============== #
+# Frame Main
+main_frame = Frame(root, bg=bg_color)
+main_frame.pack(side=TOP)
+
 # Frame 3
-frame3 = LabelFrame(root, text='Item Details', font='Helvetica 13 bold', fg=title_color, bg=bg_color)
-frame3.place(x=0, y=160)
+frame3 = LabelFrame(main_frame, text='Item Details', font='Helvetica 13 bold', fg=title_color, bg=bg_color)
+frame3.pack(side=LEFT)
 
 # Select Categories Label
 categories_label = Label(frame3, text="Select Category: ", font="Fira_Mono 16 bold", bg=bg_color, fg='white')
@@ -458,8 +468,8 @@ clearct_button.grid(row=3, column=1, padx=25, pady=35)
 
 # =============== Calculator Frame =============== #
 # Frame 4
-frame4 = LabelFrame(root, text='Calculator', font='Helvetica 13 bold', fg=title_color, bg=bg_color)
-frame4.place(x=540, y=160)
+frame4 = LabelFrame(main_frame, text='Calculator', font='Helvetica 13 bold', fg=title_color, bg=bg_color)
+frame4.pack(side=LEFT)
 
 # Let us creating a frame for the input field
 input_frame = Frame(frame4, width=100, height=100, bd=0, highlightbackground="black", highlightcolor="black", highlightthickness=2)
@@ -530,8 +540,8 @@ equals.grid(row=4, column=3, padx=1, pady=1)
 
 # =============== Bill Frame =============== #
 # frame 5
-frame5 = Frame(root, bd=5, relief=GROOVE)
-frame5.place(x=1038, y=170, width=500, height=465)
+frame5 = Frame(main_frame, bd=5, relief=GROOVE)
+frame5.pack(side=RIGHT, padx=15, ipady=5, fill='y')
 
 # Bill Title Label
 bill_title = Label(frame5, text='Bill Area', font='arial 15 bold', bd=5, relief=GROOVE)
@@ -546,8 +556,10 @@ txtarea.pack(fill=BOTH, expand=1)
 
 # =============== Total and Tax Frame =============== #
 # Frame 6
-frame6 = LabelFrame(root, text='Bill Options', font='Helvetica 13 bold', fg=title_color, bg=bg_color)
-frame6.place(x=0, y=650, relwidth=1, height=180)
+full_frame = LabelFrame(root, text='Bill Options', font='Helvetica 13 bold', fg=title_color, bg=bg_color)
+full_frame.pack(side=BOTTOM, fill='x', pady=15)
+frame6 = Frame(full_frame, bg=bg_color)
+frame6.pack(side=LEFT)
 
 # Total Grocery Label
 total_grocery = Label(frame6, text='Total Groceries: ', font="Fira_Mono 15 bold", bg=bg_color, fg='white')
@@ -599,8 +611,8 @@ other_tax_txt.grid(row=2, column=3, padx=5, pady=10)
 
 # =============== Net Payable Frame =============== #
 # Frame 7
-frame8 = Frame(frame6, relief=GROOVE, bg=bg_color)
-frame8.place(x=900, width=220, height=145)
+frame8 = Frame(full_frame, relief=GROOVE, bg=bg_color)
+frame8.pack(side=LEFT)
 
 # Net Amount Label
 net_amt = Label(frame8, text='Net Amount', font="Fira_Mono 15 bold", bg=bg_color, fg='white')
@@ -613,8 +625,8 @@ net_amt_txt.grid(row=1, column=0, padx=5, pady=2)
 
 # =============== Button Frame =============== #
 # Frame 7
-frame7 = Frame(frame6, relief=GROOVE, bg=bg_color)
-frame7.place(x=1140, width=400, height=145)
+frame7 = Frame(full_frame, relief=GROOVE, bg=bg_color)
+frame7.pack(side=RIGHT, padx=25)
 
 # Total Button
 total_button = Button(frame7, text='Total', width=16, height=3, font="Helvetica 10 bold", bg=bg_color3, fg='white', command=display_total)
@@ -622,7 +634,7 @@ total_button.grid(row=0, column=0, padx=5)
 
 # Generate Bill Button
 generatebill_button = Button(frame7, text='Generate Bill', width=16, height=3, font="Helvetica 10 bold", bg=bg_color3, fg='white', command=bill_area)
-generatebill_button.grid(row=0, column=1, padx=15, pady=10)
+generatebill_button.grid(row=0, column=1, padx=15, pady=5)
 
 # Clear Button
 clear_button = Button(frame7, text='Clear', width=16, height=3, font="Helvetica 10 bold", bg=bg_color3, fg='white', command=clear_all)
