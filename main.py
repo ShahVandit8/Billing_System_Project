@@ -388,11 +388,11 @@ title.pack(side=RIGHT)
 # =============== Customer Details Frame =============== #
 # Frame 2 :
 frame2 = LabelFrame(root, text="Customer Details", font='Helvetica 13 bold', fg=title_color, bg=bg_color)
-frame2.pack(side=TOP)
+frame2.pack(side=TOP, fill='x')
 
 # Customer Name Label
 cname_label = Label(frame2, text="Customer Name: ", font="Fira_Mono 16 bold", bg=bg_color, fg='white')
-cname_label.grid(row=0, column=0, padx=25, pady=20)
+cname_label.grid(row=0, column=0, padx=5, pady=20)
 
 # Customer Name Input Field
 cname_inp = Entry(frame2, width=22, font='Arial 15', textvariable=cname)
@@ -400,7 +400,7 @@ cname_inp.grid(row=0, column=1, pady=5, padx=2)
 
 # Customer Phone Number Label
 cmobile_label = Label(frame2, text="Phone No: ", font="Fira_Mono 16 bold", bg=bg_color, fg='white')
-cmobile_label.grid(row=0, column=2, padx=25, pady=10)
+cmobile_label.grid(row=0, column=2, padx=5, pady=10)
 
 # Customer Phone Number Input Field
 cmobile_inp = Entry(frame2, width=22, font='Arial 15', textvariable=cmobile)
@@ -408,15 +408,15 @@ cmobile_inp.grid(row=0, column=3, pady=5, padx=2)
 
 # Bill Number Label
 billno_label = Label(frame2, text="Bill No: ", font="Fira_Mono 16 bold", bg=bg_color, fg='white')
-billno_label.grid(row=0, column=4, padx=25, pady=10)
+billno_label.grid(row=0, column=4, padx=5, pady=10)
 
 # Bill Number Input Field
 billno_inp = Entry(frame2, width=22, font='Arial 15', textvariable=search_bill)
 billno_inp.grid(row=0, column=5, pady=5, padx=2)
 
 # Button of Bill Search
-bill_button = Button(frame2, text='Search', width=15, font="Helvetica 10 bold", command=bill_search)
-bill_button.grid(row=0, column=6, pady=7, padx=73)
+bill_button = Button(frame2, text='Search', width=10, font="Helvetica 10 bold", command=bill_search)
+bill_button.grid(row=0, column=6, pady=7, padx=15)
 
 
 # =============== Item Details Frame =============== #
@@ -426,11 +426,11 @@ main_frame.pack(side=TOP)
 
 # Frame 3
 frame3 = LabelFrame(main_frame, text='Item Details', font='Helvetica 13 bold', fg=title_color, bg=bg_color)
-frame3.pack(side=LEFT)
+frame3.pack(side=LEFT, padx=50)
 
 # Select Categories Label
 categories_label = Label(frame3, text="Select Category: ", font="Fira_Mono 16 bold", bg=bg_color, fg='white')
-categories_label.grid(row=0, column=0, padx=25, pady=55)
+categories_label.grid(row=0, column=0, padx=25, pady=15)
 
 # Categories Option List and Drop Down list
 categories_drop = ttk.Combobox(frame3, width=37, textvariable=clicked)
@@ -451,97 +451,25 @@ product_drop.grid(row=1, column=1, padx=2, pady=25)
 
 # Quantity Label
 quantity_label = Label(frame3, text='Quantity: ', font="Fira_Mono 16 bold", bg=bg_color, fg='white')
-quantity_label.grid(row=2, column=0, padx=25, pady=50)
+quantity_label.grid(row=2, column=0, padx=25, pady=25)
 
 # Quantity Input Field
 quantity_inp = Entry(frame3,  width=22, font='Arial 15', textvariable=qty)
-quantity_inp.grid(row=2, column=1, padx=25, pady=50)
+quantity_inp.grid(row=2, column=1, padx=25, pady=25)
 
 # Add to Cart Button
 atc_button = Button(frame3, text='Add To Card', width=18, font="Helvetica 13 bold", command=add_cart)
-atc_button.grid(row=3, column=0, padx=25, pady=35)
+atc_button.grid(row=3, column=0, padx=25, pady=25)
 
 # Clear Cart Button
 clearct_button = Button(frame3, text='Clear', width=18, font="Helvetica 13 bold", command=clear_crt)
-clearct_button.grid(row=3, column=1, padx=25, pady=35)
+clearct_button.grid(row=3, column=1, padx=25, pady=30)
 
-
-# =============== Calculator Frame =============== #
-# Frame 4
-frame4 = LabelFrame(main_frame, text='Calculator', font='Helvetica 13 bold', fg=title_color, bg=bg_color)
-frame4.pack(side=LEFT)
-
-# Let us creating a frame for the input field
-input_frame = Frame(frame4, width=100, height=100, bd=0, highlightbackground="black", highlightcolor="black", highlightthickness=2)
-input_frame.pack(side=TOP)
-
-# Let us create a input field inside the 'Frame'
-input_field = Entry(input_frame, font=('arial', 24, 'bold'), textvariable=input_text, width=27, bg="#eee", bd=0, justify=RIGHT)
-input_field.grid(row=0, column=0)
-input_field.pack(ipady=37)
-
-# Let us creating another 'Frame' for the button below the 'input_frame'
-button_frame = Frame(frame4, width=312, height=272.5, bg="grey")
-button_frame.pack()
-
-# first row
-seven = Button(button_frame, text="7", fg="black", width=16, height=5, bd=0, bg="#fff", command=lambda: extra(7))
-seven.grid(row=1, column=0, padx=1, pady=1)
-
-eight = Button(button_frame, text="8", fg="black", width=16, height=5, bd=0, bg="#fff", command=lambda: extra(8))
-eight.grid(row=1, column=1, padx=1, pady=1)
-
-nine = Button(button_frame, text="9", fg="black", width=16, height=5, bd=0, bg="#fff", command=lambda: extra(9))
-nine.grid(row=1, column=2, padx=1, pady=1)
-
-multiply = Button(button_frame, text="*", fg="black", width=17, height=5, bd=0, bg="#eee", command=lambda: extra("*"))
-multiply.grid(row=1, column=3, padx=1, pady=1)
-
-# second row
-four = Button(button_frame, text="4", fg="black", width=16, height=5, bd=0, bg="#fff", command=lambda: extra(4))
-four.grid(row=2, column=0, padx=1, pady=1)
-
-five = Button(button_frame, text="5", fg="black", width=16, height=5, bd=0, bg="#fff", command=lambda: extra(5))
-five.grid(row=2, column=1, padx=1, pady=1)
-
-six = Button(button_frame, text="6", fg="black", width=16, height=5, bd=0, bg="#fff", command=lambda: extra(6))
-six.grid(row=2, column=2, padx=1, pady=1)
-
-minus = Button(button_frame, text="-", fg="black", width=17, height=5, bd=0, bg="#eee", command=lambda: extra("-"))
-minus.grid(row=2, column=3, padx=1, pady=1)
-
-# third row
-one = Button(button_frame, text="1", fg="black", width=16, height=5, bd=0, bg="#fff", command=lambda: extra(1))
-one.grid(row=3, column=0, padx=1, pady=1)
-
-two = Button(button_frame, text="2", fg="black", width=16, height=5, bd=0, bg="#fff", command=lambda: extra(2))
-two.grid(row=3, column=1, padx=1, pady=1)
-
-three = Button(button_frame, text="3", fg="black", width=16, height=5, bd=0, bg="#fff", command=lambda: extra(3))
-three.grid(row=3, column=2, padx=1, pady=1)
-
-plus = Button(button_frame, text="+", fg="black", width=17, height=5, bd=0, bg="#eee", command=lambda: extra("+"))
-plus.grid(row=3, column=3, padx=1, pady=1)
-
-# fourth row
-Bclear = Button(button_frame, text="C", fg="black", width=16, height=5, bd=0, bg="#eee", command=lambda: clear())
-Bclear.grid(row=4, column=0, padx=1, pady=1)
-
-zero = Button(button_frame, text="0", fg="black", width=16, height=5, bd=0, bg="#fff", cursor="hand2",
-              command=lambda: extra(0))
-zero.grid(row=4, column=1, padx=1, pady=1)
-
-divide = Button(button_frame, text="/", fg="black", width=16, height=5, bd=0, bg="#eee", command=lambda: extra("/"))
-divide.grid(row=4, column=2, padx=1, pady=1)
-
-equals = Button(button_frame, text="=", fg="black", width=17, height=5, bd=0, bg="#eee", cursor="hand2",
-                command=lambda: evaluation())
-equals.grid(row=4, column=3, padx=1, pady=1)
 
 # =============== Bill Frame =============== #
 # frame 5
 frame5 = Frame(main_frame, bd=5, relief=GROOVE)
-frame5.pack(side=RIGHT, padx=15, ipady=5, fill='y')
+frame5.pack(side=RIGHT, padx=50)
 
 # Bill Title Label
 bill_title = Label(frame5, text='Bill Area', font='arial 15 bold', bd=5, relief=GROOVE)
@@ -549,84 +477,44 @@ bill_title.pack(fill='x')
 
 # Text Area And Scrollbar
 scroll_y = Scrollbar(frame5, orient=VERTICAL)
-txtarea = Text(frame5, yscrollcommand=scroll_y.set)
+txtarea = Text(frame5, yscrollcommand=scroll_y.set, width=54, height=19)
 scroll_y.pack(side=RIGHT, fill='y')
 scroll_y.config(command=txtarea.yview)
-txtarea.pack(fill=BOTH, expand=1)
+txtarea.pack()
 
 # =============== Total and Tax Frame =============== #
 # Frame 6
 full_frame = LabelFrame(root, text='Bill Options', font='Helvetica 13 bold', fg=title_color, bg=bg_color)
-full_frame.pack(side=BOTTOM, fill='x', pady=15)
+full_frame.pack(side=BOTTOM, pady=15)
 frame6 = Frame(full_frame, bg=bg_color)
 frame6.pack(side=LEFT)
 
-# Total Grocery Label
-total_grocery = Label(frame6, text='Total Groceries: ', font="Fira_Mono 15 bold", bg=bg_color, fg='white')
-total_grocery.grid(row=0, column=0, padx=20, pady=10, sticky='w')
+price_total = Label(frame6, text='Total Amount: ', font="Fira_Mono 15 bold", bg=bg_color, fg='white')
+price_total.grid(row=0, column=0, padx=20, pady=10, sticky='w')
 
-# Total Grocery Text field
-total_grocery_txt = Entry(frame6, width=15, font="Fira_Mono 16 bold",  textvariable=grocery_price)
-total_grocery_txt.grid(row=0, column=1, padx=5, pady=10)
+price_total_txt = Entry(frame6, width=15, font="Fira_Mono 16 bold",  textvariable=all_total)
+price_total_txt.grid(row=0, column=1, padx=5, pady=10)
 
-# Total Cosmetics Label
-total_cosmetic = Label(frame6, text='Total Cosmetics: ', font="Fira_Mono 15 bold", bg=bg_color, fg='white')
-total_cosmetic.grid(row=1, column=0, padx=20, pady=10, sticky='w')
+tax_total = Label(frame6, text='Total Tax: ', font="Fira_Mono 15 bold", bg=bg_color, fg='white')
+tax_total.grid(row=0, column=2, padx=20, pady=10, sticky='w')
 
-# Total cosmetic Text field
-total_cosmetic_txt = Entry(frame6, width=15, font="Fira_Mono 16 bold", textvariable=cosmetic_price)
-total_cosmetic_txt.grid(row=1, column=1, padx=5, pady=10)
-
-# Total Other Label
-total_other = Label(frame6, text='Total Other: ', font="Fira_Mono 15 bold", bg=bg_color, fg='white')
-total_other.grid(row=2, column=0, padx=20, pady=10, sticky='w')
-
-# Total Other Text field
-total_other_txt = Entry(frame6, width=15, font="Fira_Mono 16 bold", textvariable=other_price)
-total_other_txt.grid(row=2, column=1, padx=5, pady=10)
-
-# Grocery Tax Label
-grocery_tax = Label(frame6, text='Groceries Tax: ', font="Fira_Mono 15 bold", bg=bg_color, fg='white')
-grocery_tax.grid(row=0, column=2, padx=60, pady=10, sticky='w')
-
-# Grocery Tax Text field
-grocery_tax_txt = Entry(frame6, width=15, font="Fira_Mono 16 bold", textvariable=tax_grocery)
-grocery_tax_txt.grid(row=0, column=3, padx=5, pady=10)
-
-# Cosmetic Tax Label
-cosmetic_tax = Label(frame6, text='Cosmetics Tax: ', font="Fira_Mono 15 bold", bg=bg_color, fg='white')
-cosmetic_tax.grid(row=1, column=2, padx=60, pady=10, sticky='w')
-
-# Total cosmetic Text field
-cosmetic_tax_txt = Entry(frame6, width=15, font="Fira_Mono 16 bold", textvariable=tax_cosmetic)
-cosmetic_tax_txt.grid(row=1, column=3, padx=5, pady=10)
-
-# Other Tax Label
-other_tax = Label(frame6, text='Other Tax: ', font="Fira_Mono 15 bold", bg=bg_color, fg='white')
-other_tax.grid(row=2, column=2, padx=60, pady=10, sticky='w')
-
-# Other Tax Text field
-other_tax_txt = Entry(frame6, width=15, font="Fira_Mono 16 bold", textvariable=tax_other)
-other_tax_txt.grid(row=2, column=3, padx=5, pady=10)
-
-# =============== Net Payable Frame =============== #
-# Frame 7
-frame8 = Frame(full_frame, relief=GROOVE, bg=bg_color)
-frame8.pack(side=LEFT)
+tax_total_txt = Entry(frame6, width=15, font="Fira_Mono 16 bold",  textvariable=all_tax)
+tax_total_txt.grid(row=0, column=3, padx=5, pady=10)
 
 # Net Amount Label
-net_amt = Label(frame8, text='Net Amount', font="Fira_Mono 15 bold", bg=bg_color, fg='white')
-net_amt.grid(row=0, column=0, padx=50, pady=15)
+net_amt = Label(frame6, text='Net Amount', font="Fira_Mono 15 bold", bg=bg_color, fg='white')
+net_amt.grid(row=1, column=1, padx=50, pady=15)
+
 
 # Net amount Text field
-net_amt_txt = Entry(frame8, width=15, font="Fira_Mono 16 bold", textvariable=net_amt_var)
-net_amt_txt.grid(row=1, column=0, padx=5, pady=2)
+net_amt_txt = Entry(frame6, width=20, font="Fira_Mono 16 bold", textvariable=net_amt_var)
+net_amt_txt.grid(row=1, column=2, padx=5, pady=10)
 
 
 # =============== Button Frame =============== #
 # Frame 7
 frame7 = Frame(full_frame, relief=GROOVE, bg=bg_color)
-frame7.pack(side=RIGHT, padx=25)
+frame7.pack(side=RIGHT, padx=25, pady=5)
 
 # Total Button
 total_button = Button(frame7, text='Total', width=16, height=3, font="Helvetica 10 bold", bg=bg_color3, fg='white', command=display_total)
