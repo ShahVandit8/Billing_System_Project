@@ -14,7 +14,7 @@ root.title("HK Billing Software")                   # This is the title
 width = root.winfo_screenwidth()
 height = root.winfo_screenheight()
 root.geometry("%dx%d" % (width, height))
-root.title("Geeeks For Geeks")
+root.title("Billing Software")
 # This is the measurement of window
 root.resizable(0, 0)                                # To prevent resizing of window
 root.state("zoomed")                                # This is for Full Screen
